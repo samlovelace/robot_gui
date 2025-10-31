@@ -1,14 +1,13 @@
 import rclpy
-import time
+import threading
 from ros_node import RosNode, AbvState
 from shared_state import SharedState
 from gui import GUI
 
-import threading
-
 def main():
     
     rclpy.init()
+    
     shared_state = SharedState()
     node = RosNode(shared_state)
     gui = GUI(shared_state)
@@ -19,6 +18,7 @@ def main():
     
     gui.run()
         
+    loop_thread.join()
     rclpy.shutdown()
 
 if __name__ == "__main__":

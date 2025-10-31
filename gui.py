@@ -68,9 +68,11 @@ class LivePlot(QtWidgets.QWidget):
         self.plot_widget.getAxis('left').setTextPen('white')
         self.plot_widget.getAxis('bottom').setTextPen('white')
 
-        self.curve_x = self.plot_widget.plot(pen=pg.mkPen(color='r', width=2))
-        self.curve_y = self.plot_widget.plot(pen=pg.mkPen(color='g', width=2))
-        self.curve_z = self.plot_widget.plot(pen=pg.mkPen(color='b', width=2))
+        self.plot_widget.addLegend()
+
+        self.curve_x = self.plot_widget.plot(pen=pg.mkPen(color='r', width=2), name="X")
+        self.curve_y = self.plot_widget.plot(pen=pg.mkPen(color='g', width=2), name="Y")
+        self.curve_z = self.plot_widget.plot(pen=pg.mkPen(color='b', width=2), name="Z")
         layout.addWidget(self.plot_widget)
         self.setLayout(layout)
         
